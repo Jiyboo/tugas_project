@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Apr 2021 pada 14.41
--- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.0
+-- Waktu pembuatan: 05 Des 2022 pada 14.31
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,14 @@ INSERT INTO `detail_orders` (`id_detail_orders`, `id_orders`, `id_masakan`, `ket
 (1, '0001', 7, '1', 'langsung'),
 (2, '0001', 4, '2', 'langsung'),
 (3, '0001', 5, '1', 'langsung'),
-(4, '0001', 6, '1', 'langsung');
+(4, '0001', 6, '1', 'langsung'),
+(5, '0002', 9, '1', 'langsung'),
+(6, '0002', 5, '1', 'langsung'),
+(7, '0002', 7, '2', 'langsung'),
+(8, '0003', 9, '1', 'langsung'),
+(9, '0003', 6, '1', 'langsung'),
+(10, '0003', 8, '1', 'langsung'),
+(11, '0004', 9, '1', 'langsung');
 
 -- --------------------------------------------------------
 
@@ -112,7 +119,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id_orders`, `no_meja`, `tanggal`, `id_user`, `keterangan`, `status_orders`) VALUES
-('0001', '8', '2020-01-13', 1, '-', 'cash');
+('0001', '8', '2020-01-13', 1, '-', 'cash'),
+('0002', '0', '2022-09-14', 3, '-', 'cash'),
+('0003', '0', '2022-09-20', 3, '-', 'cash'),
+('0004', '0', '2022-11-24', 3, '-', 'cash');
 
 -- --------------------------------------------------------
 
@@ -133,7 +143,10 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_orders`, `tanggal`, `total_bayar`) VALUES
-(1, 1, '0001', '2021-06-04', 22500);
+(1, 1, '0001', '2021-06-04', 22500),
+(2, 3, '0002', '2022-09-14', 12900),
+(3, 3, '0003', '2022-09-20', 12400),
+(4, 3, '0004', '2022-11-24', 900);
 
 -- --------------------------------------------------------
 
@@ -154,9 +167,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `nama_user`, `id_level`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Afsal Maulana', 1),
-(2, 'zaki', '9784ea3da268563469df99b2e6593564', 'Zaki', 3),
-(3, 'sandhi', '3f952546df7c680f693ffcd505d115fc', 'Sandhi Khadafi', 2);
+(1, 'gerand', 'a74b9dc9b207112a2e1c983019cc9593', 'Gerand', 1),
+(2, 'afsal', '36f8cc9e2f71abf236d38854503b72bd', 'Afsal maulana', 3),
+(3, 'nauval', '6e2feacae7a8c35e202526abcca77c86', 'nauval', 2);
 
 --
 -- Indexes for dumped tables
@@ -206,13 +219,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_orders`
 --
 ALTER TABLE `detail_orders`
-  MODIFY `id_detail_orders` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_detail_orders` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `level`
 --
 ALTER TABLE `level`
-  MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `masakan`
@@ -224,7 +237,7 @@ ALTER TABLE `masakan`
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
